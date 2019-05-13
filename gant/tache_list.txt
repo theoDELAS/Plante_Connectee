@@ -1,0 +1,41 @@
+Choix d'une équipe
+Choisir qui fait quoi
+Création du repository git
+
+
+iot :
+
+choix du panier 
+commande
+Choix du langage 
+attente reception
+réception de données
+envoie de données
+
+
+bdd : 
+
+Choix du langage
+Déploiement sur le langage
+Implémentation des données des 30 plantes
+Réception des données IOT
+Convertir les données
+Envoie des données au site 
+
+
+
+site : 
+
+Choix du langage
+Déploiement du site sur le langage choisie
+Liste de toutes les plantes sur un onglet du site
+Un onglet avec les détails de chaque plante
+Faire afficher les données des capteurs	
+Solution pour l'hébergement
+Recherche d'un nom de domaine
+
+
+
+
+
+Préparation de la présentation 
