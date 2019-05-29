@@ -17,6 +17,10 @@ CREATE TABLE `tb_plantes`
 	PRIMARY KEY(`id_plante`)
 );	
 
+
+
+
+
 INSERT INTO tb_plantes (id_plante, plante_nom, plante_categorie, plante_description, plante_humidite, plante_photo, plante_luminosite, plante_periode, plante_temperature) VALUES 
 (1, 'bambou', 'Monocotylédone', 'Les bambous originaires d Asie donnent au jardin, à la terrasse ou au balcon une touche japonaise par leur simple présence.', 70, 'http://www.lapaysagerie.com/boutique/images_produits/68382-z.jpg', 80, '01-06 ', 26),
 (2, 'capucine', 'dicotylédones ','Plante grimpante qui fleurit tout l été, la capucine est une plante comestible presque de la tête au pied. ', 70, 'https://www.rustica.fr//images/ch070930-172-l750-h512.jpg', 80, ' 03-06', 7),
@@ -48,3 +52,13 @@ INSERT INTO tb_plantes (id_plante, plante_nom, plante_categorie, plante_descript
 (28,'noisetier', 'Rosacées','Planter un noisetier au jardin présente évidemment l avantage de pouvoir récolter des noisettes.', 70, 'https://www.pepiniere-lcf.fr/boutique/images_produits/corylus-maxima-purpurea2-z.jpg', 80, '08-11', 26),
 (29,'noyer', 'Rosacées','Avec son bois très recherché en ébénisterie, ses fruits riches en huile, son brou teintant et ses feuilles aux usages médicinaux, le noyer est un arbre civilisateur.', 70, 'https://www.jardindupicvert.com/12735-large_default/noyer-commun.jpg', 80, '08-11', 26),
 (30,'kiwitier', 'Rosacées','Le kiwi est un arbre à lianes dépassant généralement les 10m de haut, qui se palissent contre un mur. ', 70, 'https://eric-paysagiste.fr/wp-content/uploads/2015/12/kiwitier.jpg', 80, '08-11', 26);
+
+
+CREATE TABLE releve
+(
+	id_rlv INT NOT NULL AUTO_INCREMENT,
+	rlv_humidite INT NOT NULL,
+	rlv_temperature INT NOT NULL,
+	rlv_luminosite INT NOT NULL,
+	PRIMARY KEY (id_rlv)
+);
