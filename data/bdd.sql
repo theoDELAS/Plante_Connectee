@@ -62,3 +62,7 @@ CREATE TABLE releve
 	rlv_luminosite INT NOT NULL,
 	PRIMARY KEY (id_rlv)
 );
+
+
+ALTER TABLE releve
+ADD rlv_historique TIMESTAMP NOT NULL;
