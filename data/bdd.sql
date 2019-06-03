@@ -36,7 +36,7 @@ INSERT INTO tb_plantes (id_plante, plante_nom, plante_categorie, plante_descript
 (12,'muguet', 'Monocotylédone','Le muguet, symbole du 1e mai et chouchou des parfumeurs est aussi la plante du bonheur. ', 70, 'https://www.jardiner-malin.fr/wp-content/uploads/2017/05/muguet.jpg', 80, ' 03-04', 26),
 (13,'romarin', ' dicotylédones','Le romarin est une plante très aromatique qui agrémente particulièrement les grillades de viandes et de poissons.', 70, 'https://www.plantearomatique.com/1093-large_default/romarin-barbecue.jpg', 80, ' 03-04', 26),
 (14,'thym', ' dicotylédones','Le thym, sous sa forme commune, est une plante importante de la pharmacopée, et particulièrement dans le Sud de la France où elle pousse naturellement.', 70, 'https://www.graines-semences.com/1455/thym-de-provence-350-graines.jpg', 80, '09-10', 26),
-(15,'tomate', ' dicotylédones','Cette plante annuelle aux multiples formes s\'est imposée dans tous les potagers des campagnes comme des villes. ', 70, 'https://media.ooreka.fr/public/image/plant/265/mainImage-full-10006175.jpg', 80, '08-11', 26),
+(15,'tomate', ' dicotylédones','Cette plante annuelle aux multiples formes s\ est imposée dans tous les potagers des campagnes comme des villes. ', 70, 'https://media.ooreka.fr/public/image/plant/265/mainImage-full-10006175.jpg', 80, '08-11', 26),
 (16,'Campanule', ' dicotylédones','La campanule est une ravissante fleur en forme de cloche ou d etoile.', 70, 'https://media.ooreka.fr/public/image/plant/8/mainImage-full-9131531.jpg', 80, '08-11', 26),
 (17,'poirier', 'Rosacées','Les bambous originaires dAsie donnent au jardin, à la terrasse ou au balcon une touche japonaise par leur simple présence.', 70, 'https://www.jardindupicvert.com/19480-large_default/poirier-condo-.jpg', 80, '08-11', 26),
 (18,'abricotier', 'Rosacées','Pour s épanouir, l abricotier demande du plein air, une terre bien drainée et la générosité du soleil. ', 70, 'https://jardinage.lemonde.fr/images/dossiers/2017-02/abricotier-164853.jpg', 80, '08-11', 26),
@@ -63,6 +63,22 @@ CREATE TABLE releve
 	PRIMARY KEY (id_rlv)
 );
 
+CREATE TABLE plante_select
+(
+	id_slct INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(id_slct)
+);
 
-ALTER TABLE releve
-ADD rlv_historique TIMESTAMP NOT NULL;
+
+
+
+ALTER TABLE plante_select ADD id_plante int;
+ALTER TABLE plante_select ADD id_rlv int;
+
+ALTER TABLE plante_select ADD FOREIGN KEY (id_plante) REFERENCES tb_plantes(id_plante); 
+ALTER TABLE plante_select ADD FOREIGN KEY (id_rlv) REFERENCES releve(id_rlv); 
+
+
+
+
+
