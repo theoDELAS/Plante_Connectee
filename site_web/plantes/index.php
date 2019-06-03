@@ -18,31 +18,17 @@
     <body>
         <?php include '../navbar.php'; ?>
         <h1>Liste de plantes</h1>
-        <div class="container-fluid">
+        <div class="container">
+
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <p class="titre">Plante</p><br>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <p class="titre">Catégorie</p><br>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-5">
                     <p class="titre">Description</p><br>
-                </div>
-                <div class="col-md-1">
-                    <p class="titre">Humidité optimale</p><br>
-                </div>
-                <div class="col-md-1">
-                    <p class="titre">Luminosité optimale</p><br>
-                </div>
-                <div class="col-md-1">
-                    <p class="titre">Température optimale</p><br>
-                </div>
-                <div class="col-md-1">
-                    <p class="titre">Période plantation</p><br>
-                </div>
-                <div class="col-md-2">
-                    <p class="titre">Photo</p><br>
                 </div>
             </div>
         </div>
@@ -52,51 +38,36 @@
             while ($donnees = $query->fetch())
             {
             ?>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <p class="contenu">
                                 <?php echo $donnees['plante_nom']; ?><br>
                             </p>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <p class="contenu">
                                 <?php echo $donnees['plante_categorie']; ?><br>
                             </p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <p class="contenu">
                                 <?php echo $donnees['plante_description']; ?><br>
                             </p>
                         </div>
                         <div class="col-md-1">
                             <p class="contenu">
-                                <?php echo $donnees['plante_humidite']; ?><br>
+                                <?php echo '<a class="btn btn-primary" href="./voir_plus.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Voir plus</a>';?>
                             </p>
                         </div>
                         <div class="col-md-1">
                             <p class="contenu">
-                                <?php echo $donnees['plante_luminosite']; ?><br>
-                            </p>
-                        </div>
-                        <div class="col-md-1">
-                            <p class="contenu">
-                                <?php echo $donnees['plante_temperature']; ?><br>
-                            </p>
-                        </div>
-                        <div class="col-md-1">
-                            <p class="contenu">
-                                <?php echo $donnees['plante_periode']; ?><br>
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <p class="contenu">
-                                <?php echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images"' . $donnees['plante_nom'] . '">';?>
+                                <?php echo '<a class="delete btn btn-danger" href="./script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';?>
                             </p>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
             <?php
             }
                 $query->closeCursor();
