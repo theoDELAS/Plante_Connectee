@@ -51,17 +51,14 @@ while True:
 ##### For temperature
 
     temp_int = round(int(temp) / 1000)
-    if temp_int < 0 :
-        temp_int = 0
 
     temperature = str(temp_int)
 
 ##### Here we open a file where we will write all values
 
-    values = open("values.txt", "a")
+    values = open("/home/pi/programme/values.txt", "a")
     values.write(light + ";" + humidity + ";" + temperature + ";")
     values.close()
-    
 
     sleep(1)
     
