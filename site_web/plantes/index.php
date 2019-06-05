@@ -1,7 +1,7 @@
 <?php
     try 
     {
-        $bdd = new PDO('mysql:host=localhost:3306;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
     } 
     catch (Exception $e) 
     {
@@ -21,11 +21,15 @@
     <body>
         <?php include '../navbar.php'; ?>
         <div class="container-fluid">
-            <h1>Liste de plantes</h1>
-            <?php echo '<a class="btn btn-success btn_ajouter" href="./add.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Ajouter une plante</a>';?>
+            <div class="row">
+                <div class="col-xl-12">
+                    <h1>Liste de plantes</h1>
+                    <?php echo '<a class="btn btn-success btn_ajouter" href="./add.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Ajouter une plante</a>';?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xl-1">
-                    <p class="titre">Ajouter</p><br>
+                    <p class="titre"></p><br>
                 </div>
                 <div class="col-xl-1">
                     <p class="titre">Plante</p><br>
@@ -37,13 +41,13 @@
                     <p class="titre">Description</p><br>
                 </div>
                 <div class="col-xl-1">
-                    <p class="titre">Voir plus</p><br>
+                    <p class="titre"></p><br>
                 </div>
                 <div class="col-xl-1">
-                    <p class="titre">Supprimer</p><br>
+                    <p class="titre"></p><br>
                 </div>
                 <div class="col-xl-1">
-                    <p class="titre">Modifier</p><br>
+                    <p class="titre"></p><br>
                 </div>
             </div>
         </div>

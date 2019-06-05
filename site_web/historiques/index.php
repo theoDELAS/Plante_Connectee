@@ -1,13 +1,53 @@
 <?php
     try 
     {
-        $bdd = new PDO('mysql:host=localhost:3306;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
     } 
     catch (Exception $e) 
     {
         die('Erreur : ' . $e->getMessage());
     }
     $query = $bdd->query('SELECT * FROM plante_select ps JOIN tb_plantes tbp ON ps.id_plante = tbp.id_plante');
+    $query2 = $bdd->query('SELECT * FROM releve');
+    $donnees2 = $query2->fetch();
+
+    function verification_humidite($current_humidite) 
+    {
+        if ($current_humidite < 20)
+        {
+            return $current_humidite = 'danger';
+        }
+        else 
+        {
+            return $current_humidite = 'success';
+        }
+    }
+
+    function verification_temperature($current_temperature) 
+    {
+        if ($current_temperature >= 20 && $current_temperature < 60)
+        {
+            return $current_temperature = 'success';
+        }
+        else 
+        {
+            return $current_temperature = 'danger';
+        }
+    }
+
+    function verification_luminosite($current_luminosite) 
+    {
+        if ($current_luminosite >= 20 && $current_luminosite < 60)
+        {
+            return $current_luminosite = 'success';
+        }
+        else 
+        {
+            return $current_luminosite = 'danger';
+        }
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +66,45 @@
             ?>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <p class="contenu">
                                     <?php 
                                         echo $donnees['plante_nom'];
                                         echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
+
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="contenu">
+                                    <?php 
+                                        echo 'Humidité : ' . $donnees2['rlv_humidite'] . '';
+                                        echo 
+                                        '<div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-'. verification_humidite($donnees2['rlv_humidite']) .'" role="progressbar" style="width: ' . $donnees2['rlv_humidite'] .'%" aria-valuenow="'.  $donnees2['rlv_humidite'] . '" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>';
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="contenu">
+                                    <?php 
+                                        echo 'Température : ' . $donnees2['rlv_temperature'] . '';
+                                        echo 
+                                        '<div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-'. verification_temperature($donnees2['rlv_temperature']) .'" role="progressbar" style="width: ' . $donnees2['rlv_temperature'] .'%" aria-valuenow="'.  $donnees2['rlv_temperature'] . '" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>';
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="contenu">
+                                    <?php 
+                                        echo 'Luminosité : ' . $donnees2['rlv_luminosite'] . '';
+                                        echo 
+                                        '<div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-'. verification_luminosite($donnees2['rlv_luminosite']) .'" role="progressbar" style="width: ' . $donnees2['rlv_luminosite'] .'%" aria-valuenow="'.  $donnees2['rlv_luminosite'] . '" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>';
                                     ?>
                                 </p>
                             </div>

@@ -1,5 +1,5 @@
 <?php
-    $bdd = new PDO('mysql:host=localhost:3306;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
+    $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');
     $query = $bdd->prepare('SELECT * FROM tb_plantes WHERE id_plante = ?');
     $query->execute([$_GET['id_plante']]);
 ?>
@@ -28,17 +28,18 @@
 
                 <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <p class="contenu">
                             <?php 
                                 echo 'Les <span class="donnees">' . $donnees['plante_nom'] . 's</span> font parti des <span class="donnees">' . $donnees['plante_categorie'] . '</span>. Il est recommandé de le planter entre les mois <span class="donnees">' . $donnees['plante_periode'] . '</span>.<br>' .
                                 'Il faut également penser à mettre cette plante dans un un endroit où la température est idéalement à <span class="donnees"> ' . $donnees['plante_temperature'] . '°C</span>.<br>' . 
                                 'Pensez également à vérifier (grâce à notre application), que la luminosité de l\'endroit soit aux alentours de <span class="donnees"> ' . $donnees['plante_luminosite'] . '%</span>, ainsi qu\'à garder un taux d\'humidité de la terre aux alentour de <span class="donnees"> ' . $donnees['plante_humidite'] . '%</span>.<br>' . 
-                                'Si vous respectez tous ces conseils, votre <span class="donnees"> ' . $donnees['plante_nom'] . '</span> devrait ressembler à ceci :';?>
-                            <?php
-                                echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
+                                'Si vous respectez tous ces conseils, votre <span class="donnees"> ' . $donnees['plante_nom'] . '</span> devrait ressembler à ceci :';
                             ?>
                         </p>
+                    </div>
+                    <div class="col-md-6">
+                        <?php echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">'; ?>
                     </div>
                 </div>
             <?php
