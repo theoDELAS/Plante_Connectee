@@ -12,7 +12,7 @@
         // $plante_photo = $_GET['plante_photo'];
 
 
-        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost:3306;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
         $query = $bdd->prepare('INSERT INTO plante_select (id_plante) VALUES ("' . $id_plante . '")');
         $query->execute([$id_plante]);
         header('Location: ../../historiques/index.php');

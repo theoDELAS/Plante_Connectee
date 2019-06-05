@@ -12,7 +12,7 @@
 
         if(!empty($plante_nom) && !empty($plante_categorie) && !empty($plante_description) && !empty($plante_humidite) && !empty($plante_luminosite) && !empty($plante_temperature) && !empty($plante_periode) && !empty($plante_photo))
         {
-            $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');
+            $bdd = new PDO('mysql:host=localhost:3306;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
             $query = $bdd->prepare('INSERT INTO tb_plantes (plante_nom, plante_categorie, plante_description, plante_humidite, plante_luminosite, plante_temperature, plante_periode, plante_photo) VALUES ("' . $plante_nom . '", "' . $plante_categorie . '", "' . $plante_description . '", "' . $plante_humidite . '", "' . $plante_luminosite . '", "' . $plante_temperature . '", "' . $plante_periode . '", "' . $plante_photo . '")');
             $query->execute([$plante_nom, $plante_categorie, $plante_description, $plante_humidite, $plante_luminosite, $plante_temperature, $plante_periode, $plante_photo, $id_plante]);
             header('Location: ../index.php');
