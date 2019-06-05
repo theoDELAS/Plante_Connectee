@@ -6,6 +6,8 @@ import time
 from gpiozero import LightSensor
 from time import sleep
 import decimal
+import MySQLdb as mdb 
+
 
 ########## Initializing output sensor ##########
 
@@ -60,6 +62,16 @@ while True:
     values.write(light + ";" + humidity + ";" + temperature + ";")
     values.close()
 
-    sleep(1)
-    
+##### Insert into database
 
+    con = mdb.connect('localhost', 'pi', 'root', 'bdd_plantes')
+
+    cur = con.cursor()
+    cur.execute("INSERT INTO releve (rlv_humidite, rlv_temperature, rlv_luminosite) VALUES (" + humidity + "," + temperature + "," + light +" )")
+    con.commit()
+#    os.system("sudo mysql -u root -p")
+#    os.system("root")
+#    os.system("USE bdd_plantes INSERT INTO releve (rlv_hmuidite, rlv_temperature, rlv_luminosite) VALUES (" + humidity + "," + temperature + "," + light + ");")
+#    os.system("SELECT * FROM releve")
+    
+    sleep(5)
