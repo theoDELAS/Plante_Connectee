@@ -1,12 +1,46 @@
+<?php
+    try 
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
+    } 
+    catch (Exception $e) 
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $query = $bdd->query('SELECT * FROM plante_select ps JOIN tb_plantes tbp ON ps.id_plante = tbp.id_plante');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <?php include '../header_html.php' ?>
-        <title>Historique</title>
+        <title>Mes plantes</title>
     </head>
     <body>
         <?php include '../navbar.php'; ?>
-        <h1>Historique des plantes</h1>
+        <div class="container">
+        <h1>Mes plantes</h1>
+            <?php 
+                while ($donnees = $query->fetch())
+                {
+            ?>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="contenu">
+                                    <?php 
+                                        echo $donnees['plante_nom'];
+                                        echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+            <?php
+                }
+            ?>
+        
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script

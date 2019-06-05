@@ -13,12 +13,15 @@
     <body>
         <?php include '../navbar.php'; ?>
         <div class="container">
+
             <?php 
                 while ($donnees = $query->fetch())
             {
             ?>
             <h1>
-                <?php echo $donnees['plante_nom'];?>
+                <?php echo $donnees['plante_nom'] . '<br>';
+                    echo '<a class="btn btn-primary" href="./index.php" role="button">Retour</a>';
+                ?>
             </h1>
         
         

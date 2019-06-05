@@ -6,7 +6,7 @@
 
         $requete = $bdd->prepare('DELETE FROM tb_plantes WHERE id_plante=?');
         $requete->execute([$_GET['id_plante']]);
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
     else 
     {

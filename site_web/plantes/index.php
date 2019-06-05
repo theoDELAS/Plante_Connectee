@@ -1,11 +1,14 @@
 <?php
     try 
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
-        } catch (Exception $e) 
-        {
-            die('Erreur : ' . $e->getMessage());
-        }
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
+    } 
+    catch (Exception $e) 
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $query = $bdd->query('SELECT * FROM tb_plantes');
+    $donnees = $query->fetch()
 
 ?>
 
@@ -17,52 +20,74 @@
     </head>
     <body>
         <?php include '../navbar.php'; ?>
-        <h1>Liste de plantes</h1>
-        <div class="container">
-
+        <div class="container-fluid">
+            <h1>Liste de plantes</h1>
+            <?php echo '<a class="btn btn-success btn_ajouter" href="./add.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Ajouter une plante</a>';?>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-xl-1">
+                    <p class="titre">Ajouter</p><br>
+                </div>
+                <div class="col-xl-1">
                     <p class="titre">Plante</p><br>
                 </div>
-                <div class="col-md-3">
+                <div class="col-xl-2">
                     <p class="titre">Catégorie</p><br>
                 </div>
-                <div class="col-md-5">
+                <div class="col-xl-5">
                     <p class="titre">Description</p><br>
+                </div>
+                <div class="col-xl-1">
+                    <p class="titre">Voir plus</p><br>
+                </div>
+                <div class="col-xl-1">
+                    <p class="titre">Supprimer</p><br>
+                </div>
+                <div class="col-xl-1">
+                    <p class="titre">Modifier</p><br>
                 </div>
             </div>
         </div>
 
         <?php
-            $query = $bdd->query('SELECT * FROM tb_plantes');
+            // $query = $bdd->query('SELECT * FROM tb_plantes');
             while ($donnees = $query->fetch())
             {
             ?>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-xl-1">
+                            <p class="contenu">
+                            <?php echo '<a class="btn btn-primary" href="./scripts/script_mes_plantes.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Ajouter à mes plantes</a>';?>
+                            </p>
+                        </div>
+                        <div class="col-xl-1">
                             <p class="contenu">
                                 <?php echo $donnees['plante_nom']; ?><br>
                             </p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-xl-2">
                             <p class="contenu">
                                 <?php echo $donnees['plante_categorie']; ?><br>
                             </p>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-xl-5">
                             <p class="contenu">
                                 <?php echo $donnees['plante_description']; ?><br>
                             </p>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-xl-1">
                             <p class="contenu">
                                 <?php echo '<a class="btn btn-primary" href="./voir_plus.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Voir plus</a>';?>
                             </p>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-xl-1">
                             <p class="contenu">
-                                <?php echo '<a class="delete btn btn-danger" href="./script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';?>
+                                <?php echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';?>
+                            </p>
+                        </div>
+                        <div class="col-xl-1">
+                            <p class="contenu">
+                                <?php echo '<a class="delete btn btn-warning" href="./form_edit.php?id_plante=' . $donnees['id_plante'] . '">Modifier</a>';?>
                             </p>
                         </div>
                     </div>
@@ -78,7 +103,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/-xl/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous">
         </script>
