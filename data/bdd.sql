@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS `bdd_plantes`;
+﻿DROP DATABASE IF EXISTS `bdd_plantes`;
 CREATE DATABASE IF NOT EXISTS `bdd_plantes`;
 USE `bdd_plantes`;
 
@@ -78,6 +78,7 @@ ALTER TABLE plante_select ADD id_rlv int;
 ALTER TABLE plante_select ADD FOREIGN KEY (id_plante) REFERENCES tb_plantes(id_plante); 
 ALTER TABLE plante_select ADD FOREIGN KEY (id_rlv) REFERENCES releve(id_rlv); 
 
+ALTER TABLE releve ADD Time DATETIME;
 
 
 
