@@ -1,5 +1,5 @@
 <?php
-    $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'pi', 'root');
     $query = $bdd->prepare('SELECT * FROM tb_plantes WHERE id_plante = ?');
     $query->execute([$_GET['id_plante']]);
 ?>

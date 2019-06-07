@@ -1,7 +1,7 @@
 <?php
     try 
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');    
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
     } 
     catch (Exception $e) 
     {
@@ -71,6 +71,8 @@
                                     <?php 
                                         echo $donnees['plante_nom'];
                                         echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
+                                        echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';
+
 
                                     ?>
                                 </p>
