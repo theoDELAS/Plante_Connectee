@@ -8,7 +8,7 @@
         die('Erreur : ' . $e->getMessage());
     }
     $query = $bdd->query('SELECT * FROM plante_select ps JOIN tb_plantes tbp ON ps.id_plante = tbp.id_plante');
-    $query2 = $bdd->query('SELECT * FROM releve');
+    $query2 = $bdd->query('SELECT id_rlv, rlv_humidite, rlv_temperature, rlv_luminosite, Time FROM releve ORDER BY id_rlv DESC LIMIT 1');
     $donnees2 = $query2->fetch();
 
     function verification_humidite($current_humidite) 
