@@ -7,7 +7,7 @@ from gpiozero import LightSensor
 from time import sleep
 import decimal
 import MySQLdb as mdb 
-
+import datetime
 
 ########## Initializing output sensor ##########
 
@@ -27,7 +27,7 @@ GPIO.setup(channel, GPIO.IN)
     Before the end with the rest we cut at the 2nd tail when there is a egual
     And finally we read the rest of our os.popen
 """
-temp = os.popen("cat /sys/bus/w1/devices/28-031797790a09/w1_slave | tail -n 1 | cut -f10 -d ' ' | cut -f 2 -d '='").read()
+temp = os.popen("cat /sys/bus/w1/devices/28-03179779d0e6/w1_slave | tail -n 1 | cut -f10 -d ' ' | cut -f 2 -d '='").read()
 
 
 #--------------------------------------------------------------------------#
@@ -36,6 +36,12 @@ temp = os.popen("cat /sys/bus/w1/devices/28-031797790a09/w1_slave | tail -n 1 | 
 ##########  Calculating value ##########
 
 while True:
+
+##### Take time
+
+    datenow = datetime.datetime.now()
+    datefake = str(datenow)
+    date = (datefake[0:19])
 
 ##### For light sensor
 
@@ -59,7 +65,7 @@ while True:
 ##### Here we open a file where we will write all values
 
     values = open("/home/pi/programme/values.txt", "a")
-    values.write(light + ";" + humidity + ";" + temperature + ";")
+    values.write(light + ";" + humidity + ";" + temperature + ";" + date )
     values.close()
 
 ##### Insert into database
@@ -67,8 +73,9 @@ while True:
     con = mdb.connect('localhost', 'pi', 'root', 'bdd_plantes')
 
     cur = con.cursor()
-    cur.execute("INSERT INTO releve (rlv_humidite, rlv_temperature, rlv_luminosite) VALUES (" + humidity + "," + temperature + "," + light +" )")
+    cur.execute("INSERT INTO releve (rlv_humidite, rlv_temperature, rlv_luminosite, Time) VALUES (" + humidity + "," + temperature + "," + light + ", '" + date + "' )")
     con.commit()
+    con.close()
 #    os.system("sudo mysql -u root -p")
 #    os.system("root")
 #    os.system("USE bdd_plantes INSERT INTO releve (rlv_hmuidite, rlv_temperature, rlv_luminosite) VALUES (" + humidity + "," + temperature + "," + light + ");")
