@@ -1,7 +1,7 @@
 <?php
     try 
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'pi', 'root');    
+        $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'root', '');     
     } 
     catch (Exception $e) 
     {
@@ -59,7 +59,7 @@
     <body>
         <?php include '../navbar.php'; ?>
         <div class="container">
-        <h1>Mes plantes</h1>
+        <h1>Ma plante</h1>
             <?php 
                 while ($donnees = $query->fetch())
                 {
@@ -71,6 +71,7 @@
                                     <?php 
                                         echo $donnees['plante_nom'];
                                         echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
+                                        echo '<a class="btn btn-primary" href="./voir_plus.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Voir plus</a>';
                                         echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';
 
 

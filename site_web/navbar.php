@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-md fixed-top">
+    <nav class="navbar navbar-expand-xl fixed-top">
         <a class="navbar-brand" href="#"></a>
         <!-- BURGER MENU -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -11,10 +11,10 @@
                     <a class="nav-link" href="../accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../plantes">Plantes</a>
+                    <a class="nav-link" href="../plantes">Liste des Plantes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../historiques">Historiques</a>
+                    <a class="nav-link" href="../historiques">Ma Plante</a>
                 </li>
             </ul>
         </div>
