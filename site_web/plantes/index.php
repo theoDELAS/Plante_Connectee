@@ -7,8 +7,7 @@
     {
         die('Erreur : ' . $e->getMessage());
     }
-    $query = $bdd->query('SELECT * FROM tb_plantes');
-    $donnees = $query->fetch()
+    $query = $bdd->query('SELECT * FROM tb_plantes ORDER BY id_plante');
 
 ?>
 
@@ -24,7 +23,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <h1>Liste de plantes</h1>
-                    <?php echo '<a class="btn btn-success btn_ajouter" href="./add.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Ajouter une plante</a>';?>
+                    <?php echo '<a class="btn btn-success btn_ajouter" href="./add.php?id_plante=' . $query->fetch()['id_plante'] .'"  role="button">Ajouter une plante</a>';?>
                 </div>
             </div>
             <div class="row">
@@ -53,7 +52,6 @@
         </div>
 
         <?php
-            // $query = $bdd->query('SELECT * FROM tb_plantes');
             while ($donnees = $query->fetch())
             {
             ?>

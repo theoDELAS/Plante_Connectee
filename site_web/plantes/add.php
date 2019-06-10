@@ -20,8 +20,7 @@
             ?>
                 <h1>
                     Ajouter une plante
-                </h1>
-        
+                </h1>        
 
                 <form action="./scripts/script_add.php" method="post">
                     <label for="plante_nom">Nom</label>

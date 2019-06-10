@@ -90,6 +90,22 @@ img {
     width: 100% !important;
 }
 
+/* 
+#############
+# MA PLANTE #
+#############
+*/
+
+#message_warning {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#warning {
+    color: red;
+}
+
+
 .container_titre {
     display: flex;
     justify-content: space-around;

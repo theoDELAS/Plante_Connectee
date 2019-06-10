@@ -46,8 +46,6 @@
             return $current_luminosite = 'danger';
         }
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +71,7 @@
                                         echo '<img src="' . $donnees['plante_photo'] . '" alt="sources images' . $donnees['plante_nom'] . '.">';
                                         echo '<a class="btn btn-primary" href="./voir_plus.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Voir plus</a>';
                                         echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id_plante=' . $donnees['id_plante'] . '">Supprimer</a>';
-
-
+                                        echo '<a class="btn btn-success" href="./scripts/script_selectionner.php?id_plante=' . $donnees['id_plante'] .'"  role="button">Sélectionner</a>';
                                     ?>
                                 </p>
                             </div>

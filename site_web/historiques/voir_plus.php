@@ -1,7 +1,6 @@
 <?php
     $bdd = new PDO('mysql:host=localhost;dbname=bdd_plantes;charset=utf8', 'pi', 'root');
-    $query = $bdd->query('SELECT * FROM releve');
-    $query->fetch();
+    $query = $bdd->query('SELECT * FROM releve WHERE id_table_releve = ' . $_GET['id_plante'] . '   ');
 ?>
 
 <!DOCTYPE html>
