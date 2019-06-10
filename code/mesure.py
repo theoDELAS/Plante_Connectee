@@ -69,13 +69,28 @@ while True:
     values.close()
 
 ##### Insert into database
-
+    
+    # Connect to the dataase
     con = mdb.connect('localhost', 'pi', 'root', 'bdd_plantes')
 
+    # We create the cursor for make request in sql
     cur = con.cursor()
-    cur.execute("INSERT INTO releve (rlv_humidite, rlv_temperature, rlv_luminosite, Time) VALUES (" + humidity + "," + temperature + "," + light + ", '" + date + "' )")
+
+    # We collect the plant's id who have been chose by the user
+    cur.execute("SELECT id_plante FROM plante_select WHERE id_bool = 1")
+
+    # We collect the answer of the request
+    id_strslct = cur.fetchone()
+    id_str = str(id_strslct[0])
+
+
+    # We write in the database with the plant's id
+    cur.execute("INSERT INTO releve (rlv_humidite, rlv_temperature, rlv_luminosite, Time, id_table_releve) VALUES (" + humidity + "," + temperature + "," + light + ", '" + date + "', " + id_str + " )")
     con.commit()
     con.close()
+
+    ###### A shity try
+
 #    os.system("sudo mysql -u root -p")
 #    os.system("root")
 #    os.system("USE bdd_plantes INSERT INTO releve (rlv_hmuidite, rlv_temperature, rlv_luminosite) VALUES (" + humidity + "," + temperature + "," + light + ");")
