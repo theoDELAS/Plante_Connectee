@@ -78,7 +78,7 @@ ALTER TABLE plante_select ADD id_rlv int;
 ALTER TABLE plante_select ADD FOREIGN KEY (id_plante) REFERENCES tb_plantes(id_plante); 
 ALTER TABLE plante_select ADD FOREIGN KEY (id_rlv) REFERENCES releve(id_rlv); 
 
-ALTER TABLE releve ADD Time DATETIME;
+ALTER TABLE releve ADD Time VARCHAR(50);
 
 
 
