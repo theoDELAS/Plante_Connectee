@@ -81,5 +81,12 @@ ALTER TABLE plante_select ADD FOREIGN KEY (id_rlv) REFERENCES releve(id_rlv);
 ALTER TABLE releve ADD Time VARCHAR(50);
 
 
+ALTER TABLE plante_select ADD id_bool BOOLEAN;
+
+ALTER TABLE releve ADD id_table_releve int;
+ALTER TABLE releve ADD FOREIGN KEY (id_table_releve) REFERENCES plante_select(id_slct);
+
+ALTER TABLE plante_select DROP id_rlv;
 
 
+	
