@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 10 Juin 2019 à 16:22
+-- Généré le :  Mar 11 Juin 2019 à 14:37
 -- Version du serveur :  10.1.38-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u3
 
@@ -33,13 +33,6 @@ CREATE TABLE `plante_select` (
   `id_bool` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Contenu de la table `plante_select`
---
-
-INSERT INTO `plante_select` (`id_slct`, `id_plante`, `id_rlv`, `id_bool`) VALUES
-(14, 7, NULL, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -60,16 +53,18 @@ CREATE TABLE `releve` (
 --
 
 INSERT INTO `releve` (`id_rlv`, `rlv_humidite`, `rlv_temperature`, `rlv_luminosite`, `Time`, `id_table_releve`) VALUES
-(118, 1, 26, 0, '2019-06-10 16:16:50', 11),
-(119, 1, 26, 0, '2019-06-10 16:16:55', 11),
-(120, 1, 26, 0, '2019-06-10 16:17:00', 12),
-(121, 1, 26, 0, '2019-06-10 16:17:05', 12),
-(122, 1, 26, 0, '2019-06-10 16:17:10', 12),
-(123, 1, 26, 0, '2019-06-10 16:20:07', 14),
-(124, 1, 26, 0, '2019-06-10 16:20:12', 14),
-(125, 1, 26, 0, '2019-06-10 16:20:17', 14),
-(126, 1, 26, 0, '2019-06-10 16:20:22', 14),
-(127, 1, 26, 0, '2019-06-10 16:20:27', 14);
+(97, 0, 22, 0, '2019-06-11 13:31:17', 7),
+(98, 0, 22, 0, '2019-06-11 13:31:22', 7),
+(99, 0, 22, 58, '2019-06-11 13:31:27', 7),
+(100, 0, 22, 0, '2019-06-11 13:31:32', 7),
+(101, 0, 22, 0, '2019-06-11 13:31:37', 7),
+(102, 0, 22, 0, '2019-06-11 13:31:42', 7),
+(103, 0, 22, 0, '2019-06-11 13:31:47', 8),
+(104, 0, 22, 0, '2019-06-11 13:31:52', 8),
+(105, 0, 22, 0, '2019-06-11 13:31:57', 8),
+(106, 0, 22, 0, '2019-06-11 13:32:03', 8),
+(107, 0, 22, 0, '2019-06-11 13:32:08', 8),
+(108, 0, 22, 0, '2019-06-11 13:32:13', 8);
 
 -- --------------------------------------------------------
 
@@ -95,7 +90,7 @@ CREATE TABLE `tb_plantes` (
 
 INSERT INTO `tb_plantes` (`id_plante`, `plante_nom`, `plante_categorie`, `plante_description`, `plante_humidite`, `plante_photo`, `plante_luminosite`, `plante_periode`, `plante_temperature`) VALUES
 (1, 'vide', 'vide', 'vide', 0, 'vide', 0, '00-00 ', 0),
-(4, 'curcuma', ' Zingibéracées', 'Le curcuma est une belle plante exotique. Ses bractées colorées illuminent massifs et potées durant la belle saison. ', 80, 'https://www.rustica.fr//images/curcuama-bg150829-158-l750-h512.jpg', 80, '01-10', 26),
+(4, 'curcuma', ' Zingibéracées', 'Le curcuma est une belle plante exotique. Ses bractées colorées illuminent massifs et potées durant la belle saison. ', 80, 'https://www.rustica.fr//images/curcuama-bg150829-158-l750-h512.jpg', 50, '01-10', 26),
 (5, 'ficus', 'Moraceae', 'Prenez soin de votre Ficus saison après saison, pour une belle plante aux feuilles bien vertes et au port bien droit ! ', 70, 'https://mediasv6.truffaut.com/Articles/jpg/0475000/475398_003_350.jpg', 80, ' 07-09', 26),
 (6, 'fraisier', 'Rosaceae', 'Le fraisier est une plante dont les fruits, à la chair tendre et parfumée, évoquent l été, le soleil et la fraîcheur. ', 70, 'https://www.jardindupicvert.com/2751-large_default/fraisier-anais-remontant.jpg', 80, ' 03-06', 26),
 (7, 'glycine', 'dicotylédones ', 'La glycine embellit les espaces par sa cascade de fleurs très parfumées de couleur violet, rose ou blanc. ', 70, 'https://www.jardindupicvert.com/3969-large_default/glycine-de-chine-caroline-.jpg', 80, ' 07-09', 26),
@@ -121,9 +116,8 @@ INSERT INTO `tb_plantes` (`id_plante`, `plante_nom`, `plante_categorie`, `plante
 (27, 'merisier', 'Rosacées', 'Le merisier est un très bel arbre sauvage bien connu pour son bois et pour ses fruits. ', 70, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Prunus_avium.jpg/290px-Prunus_avium.jpg', 80, '08-11', 26),
 (28, 'noisetier', 'Rosacées', 'Planter un noisetier au jardin présente évidemment l avantage de pouvoir récolter des noisettes.', 70, 'https://www.pepiniere-lcf.fr/boutique/images_produits/corylus-maxima-purpurea2-z.jpg', 80, '08-11', 26),
 (29, 'noyer', 'Rosacées', 'Avec son bois très recherché en ébénisterie, ses fruits riches en huile, son brou teintant et ses feuilles aux usages médicinaux, le noyer est un arbre civilisateur.', 70, 'https://www.jardindupicvert.com/12735-large_default/noyer-commun.jpg', 80, '08-11', 26),
-(30, 'kiwitier', 'Rosacées', 'Le kiwi est un arbre à lianes dépassant généralement les 10m de haut, qui se palissent contre un mur. ', 70, 'https://eric-paysagiste.fr/wp-content/uploads/2015/12/kiwitier.jpg', 80, '08-11', 26),
 (33, 'Jean kevin', 'joueur fortnite', 'possede trotinette électrique', 100, 'https://i.ytimg.com/vi/Oj19hGTp89s/maxresdefault_live.jpg', 90, '01-12', 999),
-(34, 'rthrdtyhseth', 'trhsthsrth', 'rthsrthsthsr', 22, 'aSERYGTHTYH', 20, '0-10', 20);
+(36, 'df', 'sdf', 'sdf', 10, 'fgh', 50, '1-3', 40);
 
 --
 -- Index pour les tables exportées
@@ -158,17 +152,17 @@ ALTER TABLE `tb_plantes`
 -- AUTO_INCREMENT pour la table `plante_select`
 --
 ALTER TABLE `plante_select`
-  MODIFY `id_slct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_slct` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `releve`
 --
 ALTER TABLE `releve`
-  MODIFY `id_rlv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id_rlv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT pour la table `tb_plantes`
 --
 ALTER TABLE `tb_plantes`
-  MODIFY `id_plante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_plante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
